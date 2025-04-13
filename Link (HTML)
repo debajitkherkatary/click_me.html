@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Link with Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        a {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        #timer {
+            margin-top: 20px;
+            font-size: 24px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <a onclick="startTimer()">Hello Friends I Am Debajit KTY</a>
+        <div id="timer"></div>
+    </div>
+
+    <script>
+        function startTimer() {
+            let timeLeft = 5; // 5 seconds
+            const timerDisplay = document.getElementById('timer');
+            timerDisplay.style.display = 'block'; // Show the timer
+
+            const countdown = setInterval(() => {
+                timerDisplay.textContent = `Time left: ${timeLeft} seconds`;
+                timeLeft--;
+
+                if (timeLeft < 0) {
+                    clearInterval(countdown);
+                    timerDisplay.textContent = "Time's up!";
+                    showPopupAndRedirect();
+                }
+            }, 1000);
+        }
+
+        function showPopupAndRedirect() {
+            alert("Thanks for clicking me");
+            // Redirect to another website after the alert is closed
+            window.location.href = "https://www.example.com"; // Change this URL to your desired destination
+        }
+    </script>
+
+</body>
+</html>
